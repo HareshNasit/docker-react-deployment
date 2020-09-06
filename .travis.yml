@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t harshn12/docker-react-deployment -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true harshn12/docker-react-deployment yarn test
